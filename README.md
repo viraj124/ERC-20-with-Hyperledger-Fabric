@@ -1,4 +1,4 @@
-ERC 20 Implementation in HYperledger Fabric
+ERC 20 Implementation in Hyperledger Fabric
 
 I have implemented a basic ERC 20 Token in Hyperledger Fabric, here are the steps to interact with the chaincode via Node SDK.
 
