@@ -1,41 +1,18 @@
-[//]: # (SPDX-License-Identifier: CC-BY-4.0)
+ERC 20 Implementation in HYperledger Fabric
 
-## Hyperledger Fabric Samples
+I have implemented a basic ERC 20 Token in Hyperledger Fabric, here are the steps to interact with the chaincode via Node SDK.
 
-Please visit the [installation instructions](http://hyperledger-fabric.readthedocs.io/en/latest/install.html)
-to ensure you have the correct prerequisites installed. Please use the
-version of the documentation that matches the version of the software you
-intend to use to ensure alignment.
+-> Clone the Repository
+-> Go to Fabcar folder
+-> Run ./startFabric.sh javascript to start all the required containers, install and instantiate the chaincode
+-> After the above mention process is complete do cd javascript & run npm install to install the required sdk dependencies for     interacting with the chaincode
+-> Now run node enrollAdmin.js for enrolling an admin user for the network more details here https://hyperledger-fabric.readthedocs.io/en/release-1.4/write_first_app.html#enrolling-the-admin-user & then run node registerUser.js to creeate a user to interact with chaincode
+-> The chaincode file is located at fabric-samples/chaincode/fabcar/javascript/lib and if you refer this https://hyperledger-fabric.readthedocs.io/en/release-1.4/write_first_app.html we can interact with chaincode via Node SDK through innvoke.js & query.js which would call smart contract functions.
 
-## Download Binaries and Docker Images
+Chaincode Functionalities:
+Transfer -> transfer tokens from one Org to another -> the key here is the MSP ID
+TransferFrom -> allowing some other peer to transfer on your behalf
+Approve -> approving that peer to transfer a particular amount.
 
-The installation instructions will utilize `scripts/bootstrap.sh` (available in the fabric repository)
-script to download all of the requisite Hyperledger Fabric binaries and docker
-images, and tag the images with the 'latest' tag. Optionally,
-specify a version for fabric, fabric-ca and thirdparty images. If versions
-are not passed, the latest available versions will be downloaded.
-
-The script will also clone fabric-samples repository using the version tag that
-is aligned with the Fabric version.
-
-You can also download the script and execute locally:
-
-```bash
-# Fetch bootstrap.sh from fabric repository using
-curl -sS https://raw.githubusercontent.com/hyperledger/fabric/master/scripts/bootstrap.sh -o ./scripts/bootstrap.sh
-# Change file mode to executable
-chmod +x ./scripts/bootstrap.sh
-# Download binaries and docker images
-./scripts/bootstrap.sh [version] [ca version] [thirdparty_version]
-```
-
-### Continuous Integration
-
-Please have a look at [Continuous Integration Process](docs/fabric-samples-ci.md)
-
-## License <a name="license"></a>
-
-Hyperledger Project source code files are made available under the Apache
-License, Version 2.0 (Apache-2.0), located in the [LICENSE](LICENSE) file.
-Hyperledger Project documentation files are made available under the Creative
-Commons Attribution 4.0 International License (CC-BY-4.0), available at http://creativecommons.org/licenses/by/4.0/.
+I have used the fabric samples template since this is my first POC:)
+Please give you feedback and don't forget to star.
