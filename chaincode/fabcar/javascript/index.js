@@ -4,7 +4,7 @@
 
 'use strict';
 
-const FabCar = require('./lib/fabcar');
+const SimpleToken = require('./lib/SimpleToken');
 
-module.exports.FabCar = FabCar;
-module.exports.contracts = [ FabCar ];
+module.exports.SimpleToken = SimpleToken;
+module.exports.contracts = [ SimpleToken ];

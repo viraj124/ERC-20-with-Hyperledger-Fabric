@@ -13,31 +13,21 @@
 
 CHANNEL_NAME="$1"
 DELAY="$2"
-CC_SRC_LANGUAGE="$3"
+LANGUAGE="$3"
 TIMEOUT="$4"
 VERBOSE="$5"
 : ${CHANNEL_NAME:="mychannel"}
 : ${DELAY:="3"}
-: ${CC_SRC_LANGUAGE:="go"}
+: ${LANGUAGE:="golang"}
 : ${TIMEOUT:="10"}
 : ${VERBOSE:="false"}
-CC_SRC_LANGUAGE=`echo "$CC_SRC_LANGUAGE" | tr [:upper:] [:lower:]`
+LANGUAGE=`echo "$LANGUAGE" | tr [:upper:] [:lower:]`
 COUNTER=1
 MAX_RETRY=5
 
-if [ "$CC_SRC_LANGUAGE" = "go" -o "$CC_SRC_LANGUAGE" = "golang" ]; then
-	CC_RUNTIME_LANGUAGE=golang
-	CC_SRC_PATH="github.com/hyperledger/fabric-samples/chaincode/abstore/go/"
-elif [ "$CC_SRC_LANGUAGE" = "javascript" ]; then
-	CC_RUNTIME_LANGUAGE=node # chaincode runtime language is node.js
-	CC_SRC_PATH="/opt/gopath/src/github.com/hyperledger/fabric-samples/chaincode/abstore/javascript/"
-elif [ "$CC_SRC_LANGUAGE" = "java" ]; then
-	CC_RUNTIME_LANGUAGE=java
-	CC_SRC_PATH="/opt/gopath/src/github.com/hyperledger/fabric-samples/chaincode/abstore/java/"
-else
-	echo The chaincode language ${CC_SRC_LANGUAGE} is not supported by this script
-	echo Supported chaincode languages are: go, javascript, java
-	exit 1
+CC_SRC_PATH="github.com/chaincode/chaincode_example02/go/"
+if [ "$LANGUAGE" = "node" ]; then
+	CC_SRC_PATH="/opt/gopath/src/github.com/chaincode/chaincode_example02/node/"
 fi
 
 # import utils
@@ -46,6 +36,9 @@ fi
 echo
 echo "========= Creating config transaction to add org3 to network =========== "
 echo
+
+echo "Installing jq"
+apt-get -y update && apt-get -y install jq
 
 # Fetch the config for the channel, writing it to config.json
 fetchChannelConfig ${CHANNEL_NAME} config.json

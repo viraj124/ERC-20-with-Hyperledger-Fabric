@@ -1,6 +1,6 @@
 {
-    "name": "papernet-js",
-    "version": "0.0.1",
+    "name": "papercontract",
+    "version": "0.0.3",
     "description": "Papernet Contract",
     "main": "index.js",
     "engines": {
@@ -18,8 +18,8 @@
     "author": "hyperledger",
     "license": "Apache-2.0",
     "dependencies": {
-        "fabric-contract-api": "unstable",
-        "fabric-shim": "unstable"
+        "fabric-contract-api": "~1.4.0",
+        "fabric-shim": "~1.4.0"
     },
     "devDependencies": {
         "chai": "^4.1.2",

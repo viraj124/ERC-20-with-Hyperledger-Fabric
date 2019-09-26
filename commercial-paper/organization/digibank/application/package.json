@@ -4,14 +4,15 @@
   "description": "",
   "main": "buy.js",
   "scripts": {
+    "lint": "eslint .",
     "test": "rm -rf _idwallet && node addToWallet.js && node buy.js"
   },
   "keywords": [],
   "author": "",
-  "license": "Apache-2.0",
+  "license": "ISC",
   "dependencies": {
-    "fabric-network": "unstable",
-    "fabric-client": "unstable",
+    "fabric-network": "~1.4.0",
+    "fabric-client": "~1.4.0",
     "js-yaml": "^3.12.0"
   },
   "devDependencies": {
